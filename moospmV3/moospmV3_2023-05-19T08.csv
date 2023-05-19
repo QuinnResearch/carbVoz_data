@@ -1,0 +1,8 @@
+objectId,event,unixtime,m_PM1_CF1,m_PM1_ATM,m_PM1_b,m_PM25_CF1,m_PM25_ATM,m_PM25_b,m_PM4_b,m_PM10_CF1,m_PM10_ATM,m_PM10_b,n_PM03_P,n_PM05_P,n_PM05_b,n_PM1_P,n_PM1_b,n_PM25_P,n_PM25_b,n_PM4_b,tempC_pms,rh_pms,n_PM10_b,typ_size_b,temp_C,tempC_sen5x,rh,rh_sen5x,o3,vocIdx,noxIdx,lat,lon,alt,sats,counter,moos,ver,coreid,published_at,createdAt,updatedAt
+pkIDdxAyEw,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:09:57.723000+00:00,2023-05-19T07:09:57.919Z,2023-05-19T07:09:57.919Z
+eKHlQC9nh2,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:19:57.735000+00:00,2023-05-19T07:19:57.920Z,2023-05-19T07:19:57.920Z
+ztO1EQBVEw,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:29:57.795000+00:00,2023-05-19T07:29:58.014Z,2023-05-19T07:29:58.014Z
+BkJSaL7GkF,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:39:57.722000+00:00,2023-05-19T07:39:57.945Z,2023-05-19T07:39:57.945Z
+UEUJ0P9WQ7,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:49:57.174000+00:00,2023-05-19T07:49:57.380Z,2023-05-19T07:49:57.380Z
+7hNcxWNKeQ,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:49:57.462000+00:00,2023-05-19T07:49:57.666Z,2023-05-19T07:49:57.666Z
+bXDggi0R0i,MOOSPMv3Parser,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,e00fce6835b6173deb1a1f49,2023-05-19 07:59:56.693000+00:00,2023-05-19T07:59:56.897Z,2023-05-19T07:59:56.897Z
