@@ -1,0 +1,189 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(tidyverse)
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+> library(data.table)
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:lubridate’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+The following object is masked from ‘package:purrr’:
+
+    transpose
+
+> library(rmarkdown)
+> #library(pandoc)
+> 
+> ## pandoc::pandoc_install("2.19")
+> ## pandoc::pandoc_installed_versions()
+> ## pandoc::pandoc_installed_latest()
+> #pandoc::pandoc_activate(rmarkdown = TRUE)
+> ##Sys.setenv(RSTUDIO_PANDOC = pandoc::pandoc_locate())
+> ##Sys.getenv("RSTUDIO_PANDOC")
+> #library(rmarkdown)
+> 
+> 
+> read_moos_csv <- function(file){
++   
++     df <- data.table::fread(file) %>%
++       dplyr::mutate(date = lubridate::date(lubridate::as_datetime(unixtime[1])))
++     
++ }
+> 
+> 
+> #########################
+> #MOOSPMV1 data processing
+> #########################
+> 
+> #carb_moospmV1_hourly_dir <- "/home/christian/volckens_group/PH Roof Instrumentation/carb/carbVoz_data/moospmV1"
+> #carb_moospmV1_daily_dir <- "/home/christian/volckens_group/PH Roof Instrumentation/carb/carbVoz_data/moospmV1_daily"
+> 
+> #list_moospmV1 <- list.files(path= carb_moospmV1_hourly_dir, pattern="*.csv$", 
+> #                          ignore.case=T, full.names=T, recursive = T)
+> 
+> 
+> #list_moospmV1_df <- data.frame(list_moospmV1)
+> #colnames(list_moospmV1_df) <- c("filename")
+> 
+> #list_moospmV1_summary <- list_moospmV1_df %>%
+> #  dplyr::mutate(date = lubridate::ymd(stringr::str_sub(filename,92,101))) %>%
+> #  dplyr::group_by(date) %>%
+> #  dplyr::mutate(n=n())
+> 
+> # # print(list_moospmV1_summary,n=nrow(list_moospmV1_summary),width=Inf)
+> 
+> #list_moospmV1_daily_files <- list.files(path= carb_moospmV1_daily_dir, pattern="*.csv$", 
+> #                                        ignore.case=T, full.names=T, recursive = T)
+> 
+> #list_moospmV1_daily_files_df <- data.frame(list_moospmV1_daily_files)
+> #colnames(list_moospmV1_daily_files_df) <- c("filename")
+> 
+> #list_moospmV1_daily_files_df_summary <- list_moospmV1_daily_files_df %>%
+> #  dplyr::mutate(date = lubridate::ymd(stringr::str_sub(filename,98,107))) %>%
+> #  dplyr::rename(daily_filename = filename)
+> 
+> #list_moospmV1_summary_join <- list_moospmV1_summary %>%
+> #  dplyr::full_join(list_moospmV1_daily_files_df_summary, by = "date") 
+> 
+> ## print(list_moospmV1_summary_join,n=nrow(list_moospmV1_summary_join),width=Inf)
+> 
+> #daily_list_moospmV1 <- list_moospmV1[list_moospmV1_summary_join$n==24 & is.na(list_moospmV1_summary_join$daily_filename)]
+> ## length(daily_list_moospmV1)
+> 
+> #daily_list_moospmV1 <- daily_list_moospmV1[file.size(daily_list_moospmV1)>2]
+> ## length(daily_list_moospmV1)
+> 
+> #moospmV1_df <- daily_list_moospmV1 %>%
+> #               purrr::map(read_moos_csv)%>%
+> #               dplyr::bind_rows()
+> 
+> #split_moospmV1_df <- split(moospmV1_df, list(moospmV1_df$date))
+> 
+> ## Write out separate CSV for each date
+> #for (date in names(split_moospmV1_df)) {
+> #  write.csv(split_moospmV1_df[[date]], paste0(carb_moospmV1_daily_dir,"/moospmV1_",date, ".csv"))
+> #}
+> 
+> #########################
+> #MOOSPMV3 data processing
+> #########################
+> 
+> carb_moospmV3_hourly_dir <- "/home/christian/volckens_group/PH Roof Instrumentation/carb/carbVoz_data/moospmV3"
+> carb_moospmV3_daily_dir <- "/home/christian/volckens_group/PH Roof Instrumentation/carb/carbVoz_data/moospmV3_daily"
+> 
+> 
+> list_moospmV3 <- list.files(path= carb_moospmV3_hourly_dir, pattern="*.csv$", 
++                             ignore.case=T, full.names=T, recursive = T)
+> 
+> 
+> list_moospmV3_df <- data.frame(list_moospmV3)
+> colnames(list_moospmV3_df) <- c("filename")
+> 
+> list_moospmV3_summary <- list_moospmV3_df %>%
++   dplyr::mutate(log_hour = as.numeric(stringr::str_sub(filename,103,104)),
++                 date = case_when(log_hour == 0 ~ (lubridate::ymd(stringr::str_sub(filename,92,101)) - 1),
++                                  TRUE ~  lubridate::ymd(stringr::str_sub(filename,92,101)))) %>%
++   dplyr::group_by(date) %>%
++   dplyr::mutate(n=n())
+> 
+> list_moospmV3_daily_files <- list.files(path= carb_moospmV3_daily_dir, pattern="*.csv$", 
++                                         ignore.case=T, full.names=T, recursive = T)
+> 
+> list_moospmV3_daily_files_df <- data.frame(list_moospmV3_daily_files)
+> colnames(list_moospmV3_daily_files_df) <- c("filename")
+> 
+> list_moospmV3_daily_files_df_summary <- list_moospmV3_daily_files_df %>%
++   dplyr::mutate(date = lubridate::ymd(stringr::str_sub(filename,98,107))) %>%
++   dplyr::rename(daily_filename = filename)
+> 
+> list_moospmV3_summary_join <- list_moospmV3_summary %>%
++   dplyr::full_join(list_moospmV3_daily_files_df_summary, by = "date") 
+> 
+> # print(list_moospmV3_summary_join,n=nrow(list_moospmV3_summary_join),width=Inf)
+> 
+> daily_list_moospmV3 <- list_moospmV3[list_moospmV3_summary_join$n==24 & is.na(list_moospmV3_summary_join$daily_filename)]
+> # length(daily_list_moospmV3)
+> 
+> daily_list_moospmV3 <- daily_list_moospmV3[file.size(daily_list_moospmV3)>2]
+> # length(daily_list_moospmV3)
+> 
+> moospmV3_df <- daily_list_moospmV3 %>%
++   purrr::map(read_moos_csv)%>%
++   dplyr::bind_rows()
+> 
+> split_moospmV3_df <- split(moospmV3_df, list(moospmV3_df$date))
+> 
+> # Write out separate CSV for each date
+> for (date in names(split_moospmV3_df)) {
++   write.csv(split_moospmV3_df[[date]], paste0(carb_moospmV3_daily_dir,"/moospmV3_",date, ".csv"))
++ }
+> 
+> 
+> #rmd_source_folder <- "~/scripts/automated_scripts"
+> #carb_moospmV3_hourly_dir <- "/home/christian/volckens_group/PH Roof Instrumentation/carb/carbVoz_data/qa"
+> 
+> #rmd_file <- paste0(rmd_source_folder, "/", "carb_quick_eval.Rmd")
+> #rmarkdown::render(input = rmd_file,
+> #                  output_file = paste0(carb_moospmV3_hourly_dir,"/","carb_quick_eval", ".html"))
+> 
+> 
+> rm(list=ls())
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  2.837   0.284  12.974 
